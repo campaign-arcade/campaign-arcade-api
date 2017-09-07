@@ -10,14 +10,6 @@ const User = require('./models/user');
 // All routes to the api need to be authenticated using passport-http
 Router.use(passport.authenticate('basic', { session: false }));
 
-// Router.get('/users', function(req, res) {
-//   console.log('GET /api/users');
-//   // return all users in an array
-//   res.json({
-//     nothing: 'yet'
-//   });
-// });
-
 // #CREATE
 // create a new user account
 Router.post('/newuser', function(req, res) {
