@@ -38,4 +38,17 @@ Router.post('/newcampaign', function(req, res) {
     res.json(newCampaign);
   });
 });
+
+// create a new call
+Router.post('/newcall', function(req, res) {
+  console.log('POST /newcall');
+  const newCall = new Call({
+    userId: req.body.userId,
+    campaignId: req.body.campaignId
+  });
+  newCall.save(function(err, newCall) {
+    if (err) return console.error(err);
+    res.json(newCall);
+  });
+});
 module.exports = Router;
