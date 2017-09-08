@@ -133,4 +133,14 @@ Router.get('/calls/user/:id', function(req, res) {
     res.json(calls);
   });
 });
+
+// read calls for a campaign
+Router.get('/calls/campaign/:id', function(req, res) {
+  console.log('GET /calls/campaign/' + req.params.id);
+  Call.find({ campaignId: req.params.id }, function(err, calls) {
+    if (err) return console.error(err);
+    res.json(calls);
+  });
+});
+
 module.exports = Router;
