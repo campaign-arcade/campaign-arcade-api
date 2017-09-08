@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const campaignSchema = new Schema({
   users: [String],
+  admins: [String],
   dailyCallGoal: {
     type: Number,
     required: false
