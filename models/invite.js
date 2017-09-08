@@ -9,6 +9,10 @@ const inviteSchema = new Schema({
   campaignId: {
     type: String,
     required: true
+  },
+  inviterId: {
+    type: String,
+    required: true
   }
 });
 
