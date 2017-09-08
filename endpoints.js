@@ -124,4 +124,13 @@ Router.get('/invite/accept/:code', function(req, res) {
     });
   });
 });
+
+// read calls for a user
+Router.get('/calls/user/:id', function(req, res) {
+  console.log('GET /calls/user/' + req.params.id);
+  Call.find({ userId: req.params.id }, function(err, calls) {
+    if (err) return console.error(err);
+    res.json(calls);
+  });
+});
 module.exports = Router;
