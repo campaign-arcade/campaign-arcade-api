@@ -66,6 +66,16 @@ Router.post('/newinvite', function(req, res) {
 });
 
 // #READ
+
+// read all user info
+Router.get('/user/:id', function(req, res) {
+  console.log('GET /user/' + req.params.id);
+  User.findOne({ _id: req.params.id }, function(err, user) {
+    if (err) return console.error(err);
+    res.json(user);
+  });
+});
+
 // read all campaign info
 Router.get('/campaign/:id', function(req, res) {
   console.log('GET /campaign/' + req.params.id);
