@@ -9,6 +9,10 @@ const callSchema = new Schema({
   campaignId: {
     type: String,
     required: true
+  },
+  number: {
+    type: String,
+    required: false
   }
 });
 
