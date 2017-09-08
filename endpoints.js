@@ -29,4 +29,13 @@ Router.post('/newuser', function(req, res) {
   });
 });
 
+// create a new campaign
+Router.post('/newcampaign', function(req, res) {
+  console.log('POST /newcampaign');
+  const newCampaign = new Campaign({});
+  newCampaign.save(function(err, newCampaign) {
+    if (err) return console.error(err);
+    res.json(newCampaign);
+  });
+});
 module.exports = Router;
