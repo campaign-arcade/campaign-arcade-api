@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const inviteSchema = new Schema({
-  inviteCode: {
+const callSchema = new Schema({
+  userId: {
     type: String,
     required: true
   },
@@ -12,4 +12,4 @@ const inviteSchema = new Schema({
   }
 });
 
-const Invite = (module.exports = mongoose.model('Invite', inviteSchema));
+const Call = (module.exports = mongoose.model('Call', callSchema));

@@ -6,6 +6,9 @@ const bcrypt = require('bcryptjs');
 const Router = express.Router();
 
 const User = require('./models/user');
+const Campaign = require('./models/campaign');
+const Call = require('./models/call');
+const Invite = require('./models/invite');
 
 // All routes to the api need to be authenticated using passport-http
 Router.use(passport.authenticate('basic', { session: false }));
