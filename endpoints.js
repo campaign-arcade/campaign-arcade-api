@@ -57,7 +57,8 @@ Router.post('/newinvite', function(req, res) {
   console.log('POST /newinvite');
   const newInvite = new Invite({
     inviteCode: req.body.inviteCode,
-    campaignId: req.body.campaignId
+    campaignId: req.body.campaignId,
+    inviterId: req.body.inviterId
   });
   newInvite.save(function(err, newInvite) {
     if (err) return console.error(err);
