@@ -108,4 +108,20 @@ Router.get('/invite/:code', function(req, res) {
     res.json(invite);
   });
 });
+
+// accept an invitation
+Router.get('/invite/accept/:code', function(req, res) {
+  console.log('GET /invite/accept/' + req.params.code);
+  if (!req.body.userId)
+    return console.error(
+      'Failed to add user to the campaign.  No userId was given.'
+    );
+  Invite.findOne({ inviteCode: req.params.code }, function(err, invite) {
+    if (err) return console.error(err);
+    Campaign.findById(invite.campaignId, function(err, campaign) {
+      if (err) return console.error(err);
+      campaign.users.push(req.body.userId);
+    });
+  });
+});
 module.exports = Router;
