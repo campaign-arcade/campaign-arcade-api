@@ -96,4 +96,12 @@ Router.get('/campaign/users/:id', function(req, res) {
   });
 });
 
+// read an invite from the inviteCode
+Router.get('/invite/:code', function(req, res) {
+  console.log('GET /invite/' + req.params.code);
+  Invite.findOne({ inviteCode: req.params.code }, function(err, invite) {
+    if (err) return console.error(err);
+    res.json(invite);
+  });
+});
 module.exports = Router;
