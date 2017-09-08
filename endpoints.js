@@ -74,7 +74,7 @@ Router.post('/newinvite', function(req, res) {
 // read all user info
 Router.get('/user/:id', function(req, res) {
   console.log('GET /user/' + req.params.id);
-  User.findOne({ _id: req.params.id }, function(err, user) {
+  User.findById(req.params.id, function(err, user) {
     if (err) return console.error(err);
     res.json(user);
   });
@@ -83,7 +83,7 @@ Router.get('/user/:id', function(req, res) {
 // read all campaign info
 Router.get('/campaign/:id', function(req, res) {
   console.log('GET /campaign/' + req.params.id);
-  Campaign.findOne({ _id: req.params.id }, function(err, campaign) {
+  Campaign.findById(req.params.id, function(err, campaign) {
     if (err) return console.error(err);
     res.json(campaign);
   });
@@ -92,7 +92,7 @@ Router.get('/campaign/:id', function(req, res) {
 // read all users of a campaign
 Router.get('/campaign/users/:id', function(req, res) {
   console.log('GET /campaign/users/' + req.params.id);
-  Campaign.findOne({ _id: req.params.id }, function(err, campaign) {
+  Campaign.findById(req.params.id, function(err, campaign) {
     if (err) return console.error(err);
     res.json({
       users: campaign.users
