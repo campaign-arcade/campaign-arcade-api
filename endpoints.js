@@ -51,4 +51,17 @@ Router.post('/newcall', function(req, res) {
     res.json(newCall);
   });
 });
+
+// create a new invitation
+Router.post('/newinvite', function(req, res) {
+  console.log('POST /newinvite');
+  const newInvite = new Invite({
+    inviteCode: req.body.inviteCode,
+    campaignId: req.body.campaignId
+  });
+  newInvite.save(function(err, newInvite) {
+    if (err) return console.error(err);
+    res.json(newInvite);
+  });
+});
 module.exports = Router;
