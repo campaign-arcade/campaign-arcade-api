@@ -64,4 +64,19 @@ Router.post('/newinvite', function(req, res) {
     res.json(newInvite);
   });
 });
+
+// #READ
+// read all users of a campaign
+Router.get('/campaign/users/:id', function(req, res) {
+  console.log('GET /campaign/users/' + req.params.id);
+  Campaign.findOne({ _id: req.params.id }, function(err, campaign) {
+    if (err) return console.error(err);
+    res.json({
+      users: campaign.users
+    });
+  });
+});
+
+
+
 module.exports = Router;
