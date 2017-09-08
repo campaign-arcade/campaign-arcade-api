@@ -66,6 +66,15 @@ Router.post('/newinvite', function(req, res) {
 });
 
 // #READ
+// read all campaign info
+Router.get('/campaign/:id', function(req, res) {
+  console.log('GET /campaign/' + req.params.id);
+  Campaign.findOne({ _id: req.params.id }, function(err, campaign) {
+    if (err) return console.error(err);
+    res.json(campaign);
+  });
+});
+
 // read all users of a campaign
 Router.get('/campaign/users/:id', function(req, res) {
   console.log('GET /campaign/users/' + req.params.id);
@@ -76,7 +85,5 @@ Router.get('/campaign/users/:id', function(req, res) {
     });
   });
 });
-
-
 
 module.exports = Router;
