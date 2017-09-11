@@ -221,4 +221,17 @@ Router.delete('/user/:id', function(req, res) {
     res.json(msg);
   });
 });
+
+// delete a campaign
+Router.delete('/campaign/:id', function(req, res) {
+  console.log('DELETE /campaign/' + req.params.id);
+  Campaign.findByIdAndRemove(req.params.id, function(err, campaign) {
+    if (err) return console.error(err);
+    let msg = {
+      message: 'delete successful!',
+      campaign: campaign
+    };
+    res.json(msg);
+  });
+});
 module.exports = Router;
