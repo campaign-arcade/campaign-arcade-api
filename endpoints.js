@@ -92,8 +92,8 @@ Router.get('/campaign/:id', function(req, res) {
 });
 
 // read all users of a campaign
-Router.get('/campaign/users/:id', function(req, res) {
-  console.log('GET /campaign/users/' + req.params.id);
+Router.get('/campaign/:id/users', function(req, res) {
+  console.log('GET /campaign/' + req.params.id + '/users');
   Campaign.findById(req.params.id, function(err, campaign) {
     if (err) return console.error(err);
     res.json({
@@ -112,17 +112,19 @@ Router.get('/invite/:code', function(req, res) {
 });
 
 // accept an invitation
-Router.get('/invite/accept/:code', function(req, res) {
-  console.log('GET /invite/accept/' + req.params.code);
+Router.post('/invite/:code/accept', function(req, res) {
+  console.log('GET /invite/' + req.params.code + '/accept');
   if (!req.body.userId)
     return console.error(
       'Failed to add user to the campaign.  No userId was given.'
     );
+  res.json({ success: false });
   Invite.findOne({ inviteCode: req.params.code }, function(err, invite) {
     if (err) return console.error(err);
     Campaign.findById(invite.campaignId, function(err, campaign) {
       if (err) return console.error(err);
       campaign.users.push(req.body.userId);
+      res.json({ success: true });
     });
   });
 });
