@@ -247,4 +247,18 @@ Router.delete('/call/:id', function(req, res) {
     res.json(msg);
   });
 });
+
+// delete an invite
+Router.delete('/invite/:id', function(req, res) {
+  console.log('DELETE /invite/' + req.params.id);
+  Invite.findByIdAndRemove(req.params.id, function(err, invite) {
+    if (err) return console.error(err);
+    let msg = {
+      message: 'delete successful!',
+      invite: invite
+    };
+    res.json(msg);
+  });
+});
+
 module.exports = Router;
