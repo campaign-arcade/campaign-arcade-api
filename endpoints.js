@@ -192,4 +192,19 @@ Router.put('/call/:id', function(req, res) {
     });
   });
 });
+
+// update an invitation by id
+Router.put('/invite/:id', function(req, res) {
+  console.log('PUT /invite/' + req.params.id);
+  Invite.findById(req.params.id, function(err, invite) {
+    if (err) return console.error(err);
+    invite.inviteCode = req.body.inviteCode || invite.inviteCode;
+    invite.campaignId = req.body.campaignId || invite.campaignId;
+    invite.inviterId = req.body.inviterId || invite.inviterId;
+    invite.save(function(err, invite) {
+      if (err) return console.error(err);
+      res.json(invite);
+    });
+  });
+});
 module.exports = Router;
