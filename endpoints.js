@@ -234,4 +234,17 @@ Router.delete('/campaign/:id', function(req, res) {
     res.json(msg);
   });
 });
+
+// delete a call
+Router.delete('/call/:id', function(req, res) {
+  console.log('DELETE /call/' + req.params.id);
+  Call.findByIdAndRemove(req.params.id, function(err, call) {
+    if (err) return console.error(err);
+    let msg = {
+      message: 'delete successful!',
+      call: call
+    };
+    res.json(msg);
+  });
+});
 module.exports = Router;
