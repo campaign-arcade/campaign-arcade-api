@@ -32,14 +32,16 @@ Router.post('/newuser', function(req, res) {
 // create a new campaign
 Router.post('/newcampaign', function(req, res) {
   console.log('POST /newcampaign');
-  if (!req.body.adminId)
+  if (!req.body.adminId) {
     return console.error('Failed to create campaign.  No adminId was given...');
-
-  const newCampaign = new Campaign({});
-  newCampaign.save(function(err, newCampaign) {
-    if (err) return console.error(err);
-    res.json(newCampaign);
-  });
+  } else {
+    const newCampaign = new Campaign({});
+    newCampaign.admins.push(req.body.adminId);
+    newCampaign.save(function(err, newCampaign) {
+      if (err) return console.error(err);
+      res.json(newCampaign);
+    });
+  }
 });
 
 // create a new call
