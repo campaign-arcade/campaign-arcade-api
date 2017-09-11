@@ -207,4 +207,18 @@ Router.put('/invite/:id', function(req, res) {
     });
   });
 });
+
+// # DELETE
+// delete a user
+Router.delete('/user/:id', function(req, res) {
+  console.log('DELETE /user/' + req.params.id);
+  User.findByIdAndRemove(req.params.id, function(err, user) {
+    if (err) return console.error(err);
+    let msg = {
+      message: 'delete successful!',
+      user: user
+    };
+    res.json(msg);
+  });
+});
 module.exports = Router;
