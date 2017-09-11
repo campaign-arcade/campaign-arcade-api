@@ -1,5 +1,7 @@
 # API Documentation #
 
+URI:  https://campaign-arcade-api.herokuapp.com/
+
 expected header info:
 - Content-Type: application/x-www-form-urlencoded
 - Authorization: Basic (HASH)
