@@ -178,4 +178,18 @@ Router.put('/campaign/:id', function(req, res) {
   });
 });
 
+// update a call by id
+Router.put('/call/:id', function(req, res) {
+  console.log('PUT /call/' + req.params.id);
+  Call.findById(req.params.id, function(err, call) {
+    if (err) return console.error(err);
+    call.userId = req.body.userId || call.userId;
+    call.campaignId = req.body.campaignId || call.campaignId;
+    call.number = req.body.number || call.number;
+    call.save(function(err, call) {
+      if (err) return console.error(err);
+      res.json(call);
+    });
+  });
+});
 module.exports = Router;
