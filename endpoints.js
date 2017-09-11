@@ -72,7 +72,6 @@ Router.post('/newinvite', function(req, res) {
 });
 
 // #READ
-
 // read all user info
 Router.get('/user/:id', function(req, res) {
   console.log('GET /user/' + req.params.id);
@@ -147,4 +146,19 @@ Router.get('/calls/campaign/:id', function(req, res) {
   });
 });
 
+// #UPDATE
+// update a user account by id
+Router.put('/user/:id', function(req, res) {
+  console.log('PUT /user/' + req.params.id);
+  User.findById(req.params.id, function(err, user) {
+    if (err) return console.error(err);
+    user.username = req.body.username || user.username;
+    user.password = req.body.password || user.password;
+    user.admin = req.body.admin || user.admin;
+    user.save(function(err, user) {
+      if (err) return console.error(err);
+      res.json(user);
+    });
+  });
+});
 module.exports = Router;
