@@ -89,8 +89,52 @@ returns array of calls (json)
 
 ## UPDATE ##
 
-no update endpoints yet
+### PUT /user/:id ###
+update a user account by id
+input:
+- userId is required in the path (:id)
+- any changed parameter is required by name in the body
+returns the updated user (json)
+
+### PUT /campaign/:id ###
+update a campaign by id
+input:
+- campaignId is required in the path (:id)
+- any changed parameter is required by name in the body
+returns the updated campaign (json)
+
+### PUT /call/:id ###
+update a call by id
+input:
+- call Id is required in the path (:id)
+- any changed parameter is required by name in the body
+returns the updated call (json)
+
+### PUT /invite/:id ###
+update an invite by id
+input:
+- invite Id is required in the path (:id)
+- any changed parameter is required by name in the body
+returns the updated invite (json)
 
 ## DESTROY ##
 
-no destory endpoints yet
+### DELETE /user/:id ###
+delete a user
+- userId is required in the path (:id)
+returns a success message and the deleted user (json)
+
+### DELETE /campaign/:id ###
+delete a campaign
+- campaignId is required in the path (:id)
+returns a success message and the deleted campaign (json)
+
+### DELETE /call/:id ###
+delete a call
+- call id is required in the path (:id)
+returns a success message and the deleted call (json)
+
+### DELETE /invite/:id ###
+delete an invite
+- invite id is required in the path (:id)
+returns a success message and the deleted invite (json)

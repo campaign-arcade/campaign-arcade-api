@@ -193,7 +193,7 @@ Router.put('/call/:id', function(req, res) {
   });
 });
 
-// update an invitation by id
+// update an invite by id
 Router.put('/invite/:id', function(req, res) {
   console.log('PUT /invite/' + req.params.id);
   Invite.findById(req.params.id, function(err, invite) {
