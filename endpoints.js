@@ -161,4 +161,21 @@ Router.put('/user/:id', function(req, res) {
     });
   });
 });
+
+// update a campaign by id
+Router.put('/campaign/:id', function(req, res) {
+  console.log('PUT /campaign/' + req.params.id);
+  Campaign.findById(req.params.id, function(err, campaign) {
+    if (err) return console.error(err);
+    campaign.users = req.body.users || campaign.users;
+    campaign.admins = req.body.admins || campaign.admins;
+    campaign.dailyCallGoal = req.body.dailyCallGoal || campaign.dailyCallGoal;
+    campaign.totalCallGoal = req.body.totalCallGoal || campaign.totalCallGoal;
+    campaign.save(function(err, campaign) {
+      if (err) return console.error(err);
+      res.json(campaign);
+    });
+  });
+});
+
 module.exports = Router;
